@@ -11,17 +11,8 @@
 <body style="margin:0;padding:0;background:#0f172a">
   <div id="root"></div>
   <script>
-    // Make React hooks available globally
-    var useState = React.useState;
-    var useEffect = React.useEffect;
-    var useCallback = React.useCallback;
-    var useRef = React.useRef;
-    var useMemo = React.useMemo;
-    // Prevent "exports is not defined" error
-    var exports = {};
-    var module = {exports: exports};
-  </script>
-  <script type="text/babel">
+var useState=React.useState,useEffect=React.useEffect,useCallback=React.useCallback,useRef=React.useRef,useMemo=React.useMemo;
+var exports={},module={exports:exports};
 
 const K={r:"tp52:r",d:"tp52:d",u:"tp52:u",p:"tp52:p",s:"tp52:s",rt:"tp52:rt",pv:"tp52:pv",pp:"tp52:pp"};
 const KOLD={r:"tp50:r",d:"tp50:d",u:"tp50:u",p:"tp50:p",s:"tp50:s",rt:"tp50:rt",pv:"tp50:pv",pp:"tp50:pp"};
@@ -253,6 +244,8 @@ const Av=({id,text,size=28,fs=10})=><div className="av" style={{width:size,heigh
 const Bdg=({status})=>{const m=SM[status]||SM.pending;return <span className="badge" style={{color:m.c,background:m.b}}><span className="bd" style={{background:m.c}}/>{m.l}</span>;};
 const DR=({k,v})=><div className="dr"><div className="dk">{k}</div><div className="dv2">{v}</div></div>;
 const VB=({type})=>{const c={SPRINTER:"#7C3AFF",HIACE:"#00D4FF",VAN:"#10B981",SEDAN:"#F59E0B"}[type]||"#6B7280";return <span className="vb" style={{background:`${c}22`,color:c,border:`1px solid ${c}44`}}>{type} <span style={{opacity:.7,fontWeight:400}}>{VCAP[type]||""}</span></span>;};
+  </script>
+  <script type="text/babel">
 function FUp({label,value,onChange,accept="image/*,.pdf"}){const h=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>onChange({name:f.name,data:ev.target.result,type:f.type});r.readAsDataURL(f);};return <div className="fp"><label>{label}</label><label className={`uz${value?" hf":""}`}><input type="file" accept={accept} onChange={h}/>{value?<><Ic n="chk" s={11}/> {value.name}</>:<><Ic n="up" s={11}/> Seleccionar</>}</label></div>;}
 function PwI({value,onChange,placeholder="Contraseña"}){const[show,setShow]=useState(false);return <div className="pw"><input type={show?"text":"password"} value={value} onChange={onChange} placeholder={placeholder}/><button type="button" className="pe" onClick={()=>setShow(s=>!s)}><Ic n="eye" s={13}/></button></div>;}
 function Tog({checked,onChange}){return <label className="tg"><input type="checkbox" checked={checked} onChange={onChange}/><span className="tgs"/></label>;}
