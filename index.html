@@ -4,13 +4,43 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
   <title>Angels Transfers</title>
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.23.9/babel.min.js"></script>
+  <script crossorigin src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.0/babel.min.js"></script>
+  <style>
+    #loading{position:fixed;inset:0;background:#0f172a;display:flex;align-items:center;
+    justify-content:center;flex-direction:column;gap:16px;font-family:system-ui;color:#94a3b8}
+    .spin{width:40px;height:40px;border:3px solid #334155;border-top-color:#00d4ff;
+    border-radius:50%;animation:spin 0.8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
 </head>
 <body style="margin:0;padding:0;background:#0f172a">
-  <div id="root"></div>
+  <div id="loading"><div class="spin"></div><div>Cargando Angels Transfers...</div></div>
+  <div id="root" style="display:none"></div>
+  <script>
+var useState=React.useState,useEffect=React.useEffect,useCallback=React.useCallback,
+    useRef=React.useRef,useMemo=React.useMemo;
+var exports={},module={exports:exports};
+  </script>
   <script src="app-data.js"></script>
-  <script type="text/babel" src="app-components.js"></script>
+  <script>
+    // Load and compile JSX asynchronously
+    fetch('app-components.js')
+      .then(r => r.text())
+      .then(src => {
+        try {
+          const compiled = Babel.transform(src, {presets:['react']}).code;
+          const script = document.createElement('script');
+          script.textContent = compiled;
+          document.body.appendChild(script);
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('root').style.display = 'block';
+        } catch(e) {
+          document.getElementById('loading').innerHTML = 
+            '<div style="color:#ef4444;padding:20px;text-align:center">Error: ' + e.message + '</div>';
+        }
+      });
+  </script>
 </body>
 </html>
