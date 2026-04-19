@@ -7,12 +7,21 @@
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.23.9/babel.min.js"></script>
-  <script>var exports={};var module={exports:exports};</script>
 </head>
 <body style="margin:0;padding:0;background:#0f172a">
   <div id="root"></div>
-  <script type="text/babel" data-presets="react">
-const {useState,useEffect,useCallback}=React;
+  <script>
+    // Make React hooks available globally
+    var useState = React.useState;
+    var useEffect = React.useEffect;
+    var useCallback = React.useCallback;
+    var useRef = React.useRef;
+    var useMemo = React.useMemo;
+    // Prevent "exports is not defined" error
+    var exports = {};
+    var module = {exports: exports};
+  </script>
+  <script type="text/babel">
 
 const K={r:"tp52:r",d:"tp52:d",u:"tp52:u",p:"tp52:p",s:"tp52:s",rt:"tp52:rt",pv:"tp52:pv",pp:"tp52:pp"};
 const KOLD={r:"tp50:r",d:"tp50:d",u:"tp50:u",p:"tp50:p",s:"tp50:s",rt:"tp50:rt",pv:"tp50:pv",pp:"tp50:pp"};
