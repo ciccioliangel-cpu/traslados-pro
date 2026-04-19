@@ -14,7 +14,7 @@
   <script type="text/babel" data-presets="react">
 const {useState,useEffect,useCallback}=React;
 
-const K={r:"tp51:r",d:"tp51:d",u:"tp51:u",p:"tp51:p",s:"tp51:s",rt:"tp51:rt",pv:"tp51:pv",pp:"tp51:pp"};
+const K={r:"tp52:r",d:"tp52:d",u:"tp52:u",p:"tp52:p",s:"tp52:s",rt:"tp52:rt",pv:"tp52:pv",pp:"tp52:pp"};
 const KOLD={r:"tp50:r",d:"tp50:d",u:"tp50:u",p:"tp50:p",s:"tp50:s",rt:"tp50:rt",pv:"tp50:pv",pp:"tp50:pp"};
 // Migration: load from old versioned keys if new key empty
 const OLD_PREFIXES=["tp65","tp64","tp63","tp62","tp61","tp60","tp59","tp58","tp57","tp56","tp55","tp54","tp53","tp52","tp51","tp50","tp49","tp48","tp47","tp46","tp45","tp44","tp43","tp42","tp41","tp40","tp39","tp38","tp37","tp36","tp35","tp34","tp33","tp32","tp31","tp30"];
@@ -942,7 +942,7 @@ function ResPage({reservations,drivers,filtered,urg,dAlerts,fd,setFd,fd2,setFd2,
             <td>{drv?(<div style={{display:"flex",alignItems:"center",gap:5}}><Av id={drv.id} text={drv.avatar} size={22} fs={8}/><div><div style={{fontSize:11.5,fontWeight:600}}>{drv.name.split(" ")[0]}</div><div style={{fontSize:9.5,color:"var(--mu2)"}}>{drv.plate}</div></div></div>):!fin?<button className="btn bam sm" style={{fontSize:10,padding:"3px 6px"}} onClick={()=>onAss(res)}>Asignar</button>:<span style={{color:"var(--mu)",fontSize:10.5}}>—</span>}</td>
             <td><Bdg status={res.status}/></td>
             <td><div style={{display:"flex",gap:2,flexWrap:"wrap"}}>
-              {!res.driverId&&!fin&&<button className="btn bam sm" style={{fontSize:9.5,padding:"2px 5px"}} onClick={()=>onAss(res)}>Asig.</button>}
+              {!fin&&<button className="btn bam sm" style={{fontSize:9.5,padding:"2px 5px"}} onClick={()=>onAss(res)}>{res.driverId?"Reasig.":"Asig."}</button>}
               {res.driverId&&!fin&&<button className="btn bgr sm" onClick={()=>onWA({res,drv:drv||gd(res.driverId),mode:"alert"})}><Ic n="wa" s={10}/></button>}
               <button className="btn bg2 sm" onClick={()=>onDet(res)}><Ic n="edit" s={10}/></button>
               {res.driverId&&!fin&&<button className="btn bg2 sm" onClick={()=>onReA(res)}><Ic n="swap" s={10}/></button>}
